@@ -1,0 +1,16 @@
+h2 {
+	color: blue
+}
+
+table {
+	border-width: medium;
+	border-color: green;
+	border-style: solid;
+	background-color: rgb(20, 200, 200);
+}
+
+td {
+	border-style: solid;
+	border-color: red;
+	border-width: thin;
+}
