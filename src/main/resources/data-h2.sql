@@ -1,6 +1,7 @@
 insert into user values(1,'mukeshtipl','mukeshtipl@gmail.com','');
 insert into user values(2,'rahulv','rahulverma@gmail.com','');
 insert into user values(3,'niting','nitingoyal@gmail.com','');
+insert into user values(4,'manojs','manojs@gmail.com','');
 
 insert into  container values(1,'customer1_linux',1);
 insert into  container values(2,'customer1_windows',1);
