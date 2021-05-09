@@ -75,13 +75,13 @@ public class CredentialRestControllerTests {
 
 		User owner = new User("user1", "user1@gmail.com", "");
 		Container container = new Container("Linux", owner);
-		Credential credential = new Credential(1, "root", container, "");
+		// Credential credential = new Credential(1, "root", container, "");
 
 		Credential expectedCredential = new Credential(1, "root", container, "ENCPASSWORD");
 
 		when(credentialService.updatePassword(1, "encPassWord")).thenReturn(Optional.of(expectedCredential));
-		ResponseEntity<Optional<Credential>> result = credentialRestController.updatePassword(1,
-				Map.of("encryptedPassword", "encPassWord"));
+		Map<String, Object> requestData = Map.of("encryptedPassword", "encPassWord");
+		ResponseEntity<Optional<Credential>> result = credentialRestController.updatePassword(1, requestData);
 		Credential actual = result.getBody().get();
 		assertEquals("ENCPASSWORD", actual.getPassword());
 
