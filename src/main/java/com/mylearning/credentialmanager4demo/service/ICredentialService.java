@@ -10,5 +10,7 @@ public interface ICredentialService {
 
 	List<Credential> findByUsername(String username);
 
-	Optional<Credential>  findById(Integer id);
+	Optional<Credential> findById(Integer id);
+
+	Optional<Credential> updatePassword(Integer id, String encryptedPassword);
 }
