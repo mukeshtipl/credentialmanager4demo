@@ -75,7 +75,7 @@ public class CredentialRestControllerTests {
 
 		User owner = new User("user1", "user1@gmail.com", "");
 		Container container = new Container("Linux", owner);
-		Credential credential = new Credential(1, "root", container, "");
+		// Credential credential = new Credential(1, "root", container, "");
 
 		Credential expectedCredential = new Credential(1, "root", container, "ENCPASSWORD");
 
