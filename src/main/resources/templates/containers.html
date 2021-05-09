@@ -1,30 +1,56 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Containers</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}" />
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Credential Management</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<!--  <link href="default.css" rel="stylesheet" type="text/css" />-->
+<link rel="stylesheet" th:href="@{/css/default.css}" />
 </head>
 <body>
+	<div id="header">
+		<div id="logo">
+			<a href="/">
+				<h1>Credential Management</h1> </a>
+		</div>
+		<div id="splash">
+			<img th:src="@{/images/img02.jpg}" alt="" width="520" height="200" />
+		</div>
+	</div>
+	<div id="content">
 
-<h2>List of Containers</h2>
 
-<table>
 
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Owner</th>
-    </tr>
+		<div id="updates" class="boxed">
+			<h2 class="title">Containers</h2>
 
-    <tr th:each="container : ${containers}">
-        <td th:text="${container.id}">Id</td>
-        <td th:text="${container.name}">Name</td>
-        <td th:text="${container.owner.email}">Owner</td>
-    </tr>
+			<div class="content">
 
-</table>
+
+				<table id="boxed">
+
+					<tr>
+						<th>Id</th>
+						<th>Name</th>
+						<th>Owner</th>
+					</tr>
+
+					<tr th:each="container : ${containers}">
+						<td width=100 th:text="${container.id}">Id</td>
+						<td width=300 th:text="${container.name}">Name</td>
+						<td width=300 th:text="${container.owner.email}">Owner</td>
+					</tr>
+
+
+
+				</table>
+			</div>
+		</div>
+
+	</div>
+
 
 </body>
 </html>

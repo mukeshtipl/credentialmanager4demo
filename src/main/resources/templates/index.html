@@ -1,11 +1,70 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Home page</title>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <a href="users">Show Users</a>
-    </body>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Credential Management</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<!--  <link href="default.css" rel="stylesheet" type="text/css" />-->
+<link rel="stylesheet" th:href="@{/css/default.css}" />
+</head>
+<body>
+	<div id="header">
+		<div id="logo">
+			<a href="/">
+				<h1>Credential Management</h1></a>
+		</div>
+		<div id="splash">
+			<img th:src="@{/images/img02.jpg}" alt="" width="520" height="200" />
+		</div>
+	</div>
+	<div id="content">
+
+
+		<div id="login" class="boxed">
+			<h2 class="title">Client Account</h2>
+			<div class="content">
+				<form id="form1" method="post" action="#">
+					<fieldset>
+						<legend>Sign-In</legend>
+						<label for="inputtext1">Client ID:</label> <input id="inputtext1"
+							type="text" name="inputtext1" value="" /> <label
+							for="inputtext2">Password:</label> <input id="inputtext2"
+							type="password" name="inputtext2" value="" /> <input
+							id="inputsubmit1" type="submit" name="inputsubmit1"
+							value="Sign In" />
+						<p>
+							<a href="#">Forgot your password?</a>
+						</p>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+		<div id="updates" class="boxed">
+			<h2 class="title">Links</h2>
+			<div class="content">
+				<table id="boxed">
+					<tr>
+						<td width="750"><a href="users">Users</a></td>
+
+					</tr>
+					<tr>
+						<td width=750><a href="containers">Containers</a></td>
+
+					</tr>
+					<tr>
+						<td width=750><a href="credentials">Credentials</a></td>
+
+					</tr>
+
+				</table>
+			</div>
+		</div>
+
+	</div>
+
+
+
+</body>
 </html>

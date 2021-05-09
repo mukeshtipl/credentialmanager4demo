@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,7 +34,7 @@ public class CredentialRestController {
 	public @ResponseBody ResponseEntity<List<Credential>> getCredentialsByUsername(
 			@RequestParam(value = "username", required = false) String username) {
 		List<Credential> list;
-		if (username == null||username.length()==0)
+		if (username == null || username.length() == 0)
 			list = (List<Credential>) credentialService.findAll();
 		else
 			list = credentialService.findByUsername(username);
@@ -44,9 +45,16 @@ public class CredentialRestController {
 	@RequestMapping("/credentials/{id}")
 	public @ResponseBody ResponseEntity<Optional<Credential>> getCredentialsByUsername(@PathVariable Integer id) {
 
-		Optional<Credential> list = credentialService.findById(id);
+		Optional<Credential> credential = credentialService.findById(id);
 
-		return new ResponseEntity<Optional<Credential>>(list, HttpStatus.OK);
+		return new ResponseEntity<Optional<Credential>>(credential, HttpStatus.OK);
+	}
+
+	@PatchMapping("/credentials/{id}/updatePassword")
+	public @ResponseBody ResponseEntity<Optional<Credential>> updatePassword(@PathVariable Integer id,
+			@RequestParam(value = "encryptedPassword", required = true) String encrpytedPassword) {
+		Optional<Credential> credential = credentialService.updatePassword(id, encrpytedPassword);
+		return new ResponseEntity<Optional<Credential>>(credential, HttpStatus.OK);
 	}
 
 }

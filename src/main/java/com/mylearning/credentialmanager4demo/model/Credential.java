@@ -1,25 +1,32 @@
 package com.mylearning.credentialmanager4demo.model;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "credential")
 public class Credential {
 	@Id
 	@GeneratedValue
+	// @CsvBindByName
 	private int id;
+
+	// @CsvBindByName
 	private String username;
+
 	private String password;
 
+	// @CsvBindByName(column = "password")
+	@Transient
+	private String encryptedPassword;
+
 	@ManyToOne(optional = false)
-	@JoinColumn(name ="container",  referencedColumnName = "id")
+	@JoinColumn(name = "container", referencedColumnName = "id")
 	private Container container;
 
 	public Credential() {
@@ -95,6 +102,21 @@ public class Credential {
 	 */
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	/**
+	 * @return the encryptedPassword
+	 */
+	public String getEncryptedPassword() {
+		return encryptedPassword;
+	}
+
+	/**
+	 * @param encryptedPassword the encryptedPassword to set
+	 */
+	public void setEncryptedPassword(String encryptedPassword) {
+		this.encryptedPassword = encryptedPassword;
+		this.setPassword(encryptedPassword.toUpperCase());
 	}
 
 	@Override
