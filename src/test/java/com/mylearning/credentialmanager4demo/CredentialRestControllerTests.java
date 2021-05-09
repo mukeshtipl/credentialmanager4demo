@@ -5,6 +5,7 @@ import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
@@ -79,7 +80,8 @@ public class CredentialRestControllerTests {
 		Credential expectedCredential = new Credential(1, "root", container, "ENCPASSWORD");
 
 		when(credentialService.updatePassword(1, "encPassWord")).thenReturn(Optional.of(expectedCredential));
-		ResponseEntity<Optional<Credential>> result = credentialRestController.updatePassword(1, "encPassWord");
+		ResponseEntity<Optional<Credential>> result = credentialRestController.updatePassword(1,
+				Map.of("encryptedPassword", "encPassWord"));
 		Credential actual = result.getBody().get();
 		assertEquals("ENCPASSWORD", actual.getPassword());
 

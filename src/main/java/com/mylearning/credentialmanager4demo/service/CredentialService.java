@@ -34,6 +34,8 @@ public class CredentialService implements ICredentialService {
 	public Optional<Credential> updatePassword(Integer id, String encryptedPassword) {
 
 		Credential credential = credentialRepository.findById(id).get();
+		// Credential credential =
+		// credentialRepository.findById(id).orElseThrow(NoSuchElementException::new);
 		if (credential != null) {
 			credential.setEncryptedPassword(encryptedPassword);
 			return Optional.of(credentialRepository.save(credential));
