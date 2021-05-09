@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -80,7 +81,7 @@ public class CredentialRestControllerTests {
 		Credential expectedCredential = new Credential(1, "root", container, "ENCPASSWORD");
 
 		when(credentialService.updatePassword(1, "encPassWord")).thenReturn(Optional.of(expectedCredential));
-		Map<String, Object> requestData = Map.of("encryptedPassword", "encPassWord");
+		Map<String, Object> requestData = Collections.singletonMap("encryptedPassword", "encPassWord");
 		ResponseEntity<Optional<Credential>> result = credentialRestController.updatePassword(1, requestData);
 		Credential actual = result.getBody().get();
 		assertEquals("ENCPASSWORD", actual.getPassword());
